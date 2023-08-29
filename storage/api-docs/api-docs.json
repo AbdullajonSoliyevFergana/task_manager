@@ -1,0 +1,809 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TASK MANAGER API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/app/user/auth/registration": {
+            "post": {
+                "tags": [
+                    "User API"
+                ],
+                "summary": "Register user",
+                "operationId": "6913dc25aaf5bf4aee19e7bb360c2c33",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "role": {
+                                        "type": "string",
+                                        "example": "admin"
+                                    },
+                                    "username": {
+                                        "type": "string",
+                                        "example": "Abdullajon"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registration user and to login.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": {
+                                                "username": "Abdullajon",
+                                                "password": "$2y$10$sZZUV7ykVyAXT7/eDzGyReThtdkaLUK9jknrDEDNaeK71uKeQkfiO",
+                                                "token": "ms7ST2opzINdvWCxLanr8zg21kOKFS",
+                                                "updated_at": "2023-08-28T11:58:12.000000Z",
+                                                "created_at": "2023-08-28T11:58:12.000000Z",
+                                                "id": 1
+                                            }
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Login!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/app/user/auth/login": {
+            "post": {
+                "tags": [
+                    "User API"
+                ],
+                "summary": "Login user",
+                "operationId": "5b146fb05587bdf189f8c88b5b2b32ca",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "Abdullajon"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Check user **username** & **password** and to login.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": {
+                                                "id": 1,
+                                                "username": "Abdullajon",
+                                                "password": "$2y$10$sZZUV7ykVyAXT7/eDzGyReThtdkaLUK9jknrDEDNaeK71uKeQkfiO",
+                                                "token": "1XkHdP6TEgxACHCJlGsn4EitiPTIVB",
+                                                "created_at": "2023-08-28T11:58:12.000000Z",
+                                                "updated_at": "2023-08-28T12:03:25.000000Z"
+                                            }
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Login!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/app/user/get": {
+            "get": {
+                "tags": [
+                    "User API"
+                ],
+                "summary": "Get user",
+                "operationId": "78c77d22f61c38495e8485842b8fdd18",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and get this user.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": {
+                                                "id": 1,
+                                                "username": "Abdullajon",
+                                                "password": "$2y$10$sZZUV7ykVyAXT7/eDzGyReThtdkaLUK9jknrDEDNaeK71uKeQkfiO",
+                                                "token": "1XkHdP6TEgxACHCJlGsn4EitiPTIVB",
+                                                "created_at": "2023-08-28T11:58:12.000000Z",
+                                                "updated_at": "2023-08-28T12:03:25.000000Z"
+                                            }
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": ""
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/app/user/list": {
+            "get": {
+                "tags": [
+                    "User API"
+                ],
+                "summary": "Get user list",
+                "operationId": "4828b4cee063f8c565fbcb36de7b877e",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and get user list.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": [
+                                                {
+                                                    "id": 2,
+                                                    "username": "Ali",
+                                                    "password": "$2y$10$wnBgNzXvguR0QSAWJ9AehOnkKr1xzHTREEYOngzoUxZb0QC0cPQai",
+                                                    "token": "8stomirSGdmP4TJPcML1gYBtAFsuYC",
+                                                    "created_at": "2023-08-29T04:00:55.000000Z",
+                                                    "updated_at": "2023-08-29T04:00:55.000000Z"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "username": "Vali",
+                                                    "password": "$2y$10$2gNZL7TnXp4RgcCWvGzjn.EgaOcAWrZgaLgi662ylRUVuA/CsYj1q",
+                                                    "token": "QG45GsPO2CyMalWJjE2Cm2UPEpA0Yp",
+                                                    "created_at": "2023-08-29T04:01:23.000000Z",
+                                                    "updated_at": "2023-08-29T04:01:23.000000Z"
+                                                }
+                                            ]
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": ""
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/app/user/auth/logout": {
+            "get": {
+                "tags": [
+                    "User API"
+                ],
+                "summary": "Logout user",
+                "operationId": "454874fa08aa84bd6e12f074ae1b2e91",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and logout this user.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": null
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Logout!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/add": {
+            "post": {
+                "tags": [
+                    "Task API"
+                ],
+                "summary": "Add new task",
+                "operationId": "76f5b62d3d3d2c6dd92c9023ac5db925",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "number",
+                                        "example": "3"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Complete user APIs"
+                                    },
+                                    "desc": {
+                                        "type": "string",
+                                        "example": "Make user APIs CRUD..."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and added new task",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": null
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Added Successfully!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/list": {
+            "post": {
+                "tags": [
+                    "Task API"
+                ],
+                "summary": "Get task list",
+                "operationId": "06485987769efc06be2b1c9be35ed928",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "page": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "per_page": {
+                                        "type": "number",
+                                        "example": "10"
+                                    },
+                                    "keyword": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and get task list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": {
+                                                "current_page": 1,
+                                                "data": [
+                                                    {
+                                                        "id": 17,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:24.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 16,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:23.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 15,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:22.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 14,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:21.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 13,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:20.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 12,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:19.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 11,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:18.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 10,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:17.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 9,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:16.000000Z",
+                                                        "updated_at": null
+                                                    },
+                                                    {
+                                                        "id": 8,
+                                                        "user_id": 3,
+                                                        "name": "Complete task APIs",
+                                                        "desc": "Make task APIs CRUD...",
+                                                        "created_at": "2023-08-29T04:39:15.000000Z",
+                                                        "updated_at": null
+                                                    }
+                                                ],
+                                                "first_page_url": "http://127.0.0.1:8000/api/task/list?page=1",
+                                                "from": 1,
+                                                "last_page": 2,
+                                                "last_page_url": "http://127.0.0.1:8000/api/task/list?page=2",
+                                                "links": [
+                                                    {
+                                                        "url": null,
+                                                        "label": "&laquo; Previous",
+                                                        "active": false
+                                                    },
+                                                    {
+                                                        "url": "http://127.0.0.1:8000/api/task/list?page=1",
+                                                        "label": "1",
+                                                        "active": true
+                                                    },
+                                                    {
+                                                        "url": "http://127.0.0.1:8000/api/task/list?page=2",
+                                                        "label": "2",
+                                                        "active": false
+                                                    },
+                                                    {
+                                                        "url": "http://127.0.0.1:8000/api/task/list?page=2",
+                                                        "label": "Next &raquo;",
+                                                        "active": false
+                                                    }
+                                                ],
+                                                "next_page_url": "http://127.0.0.1:8000/api/task/list?page=2",
+                                                "path": "http://127.0.0.1:8000/api/task/list",
+                                                "per_page": 10,
+                                                "prev_page_url": null,
+                                                "to": 10,
+                                                "total": 17
+                                            }
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": ""
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/{id}/detail": {
+            "get": {
+                "tags": [
+                    "Task API"
+                ],
+                "summary": "Get detail task",
+                "operationId": "b8daa208e9209fa7347af79c346ec672",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Paste task id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and get detail task",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": {
+                                                "id": 1,
+                                                "user_id": 3,
+                                                "name": "Complete user APIs",
+                                                "desc": "Make user APIs CRUD...",
+                                                "created_at": "2023-08-29T04:33:26.000000Z",
+                                                "updated_at": null
+                                            }
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": ""
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/{id}/update": {
+            "post": {
+                "tags": [
+                    "Task API"
+                ],
+                "summary": "Update this task",
+                "operationId": "ccc97e276c4d9c0aa060a39f2967da99",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Paste task id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "number",
+                                        "example": "3"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Complete user APIs"
+                                    },
+                                    "desc": {
+                                        "type": "string",
+                                        "example": "Make user APIs CRUD...1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and update this task",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": null
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Updated Successfully!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task/{id}/delete": {
+            "get": {
+                "tags": [
+                    "Task API"
+                ],
+                "summary": "Delete task",
+                "operationId": "2419f6c92bde7e1b6b954eaf7c987a07",
+                "parameters": [
+                    {
+                        "name": "Token",
+                        "in": "header",
+                        "description": "User token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Paste task id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Check user **token** and delete this task",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "success",
+                                            "format": "boolean",
+                                            "default": "true"
+                                        },
+                                        "data": {
+                                            "description": "data",
+                                            "format": "object",
+                                            "example": null
+                                        },
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "Deleted Successfully!"
+                                        },
+                                        "error_code": {
+                                            "description": "error_code",
+                                            "format": "integer",
+                                            "default": "0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
