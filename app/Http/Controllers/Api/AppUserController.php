@@ -212,7 +212,7 @@ class AppUserController extends Controller
      */
 
     public function getAppUser(){
-        $check_app_user = AppUser::where('token', $this->getToken())->with('setStaticColumn')->first();
+        $check_app_user = AppUser::where('token', $this->getToken())->first();
         if ($check_app_user == null) {
             return $this->sendResponse(null, false, "User not found!", 1);
         }
